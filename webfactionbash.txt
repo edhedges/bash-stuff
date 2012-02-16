@@ -1,0 +1,30 @@
+/* Content of .bash_profile */
+
+# .bash_profile
+
+# Get the aliases and functions
+if [ -f ~/.bashrc ]; then
+	. ~/.bashrc
+fi
+
+# User specific environment and startup programs
+
+PATH=$PATH:$HOME/bin
+
+export PATH
+
+I changed to this: source ~/.bashrc same as local
+
+/* Content of .bash_rc */
+
+PATH=$PATH:$HOME/bin
+export PATH
+
+alias python=python2.7
+alias easy_install=easy_install-2.7
+alias pip=pip-2.7
+
+export WORKON_HOME=$HOME/virtualenvs
+export PROJECT_HOME=$HOME/webapps/pyprojects
+export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python2.7
+source /home/edhedges/bin/virtualenvwrapper.sh

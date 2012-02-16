@@ -1,0 +1,34 @@
+/* Content of .bash_profile */
+
+source ~/.bashrc
+
+
+/* Content of .bash_rc */
+
+# Setting PATH for Python 2.7
+# The orginal version is saved in .bash_profile.pysave
+PATH="/Library/Frameworks/Python.framework/Versions/2.7/bin:${PATH}"
+export PATH
+
+#alias to fab for use with the way I make django projects
+alias fab='fab -f conf/fabfile.py'
+
+#Setting paths for projects and virtualenvs to be stored as well as where virtualenvwrapper.sh is
+export WORKON_HOME=$HOME/virtualenvs
+export PROJECT_HOME=$HOME/projects
+source /usr/local/bin/virtualenvwrapper.sh
+
+#This assumes that virtualenv, virtualenvwrapper, and pip are installed.
+mkdjangoproj () {
+    mkproject --no-site-packages --prompt=$1: $1 &&
+    git init &&
+    git pull git@github.com:edhedges/eds-djangoplate.git master &&
+    rm README.md &&
+    pip install -r conf/requirements.txt &&
+    fab -f 
+    chmod +x manage.py
+    ./manage.py new_secret &&
+    ./manage.py syncdb &&
+    ./manage.py migrate &&
+	./manage.py runserver
+}

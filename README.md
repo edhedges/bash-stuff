@@ -1,0 +1,1 @@
+This just houses the content of my .bashrc and .bash_profile on both my local machine and webfaction server.
